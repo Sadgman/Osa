@@ -301,7 +301,17 @@ client.on('group_join', (notification) => {
     notification.getChat().then((chat) => {
         addgroup(chat.id._serialized);
         if(watchBot(chat.id._serialized)){
-            notification.reply(`Bienvenido a ${chat.name}, @${notification.recipientIds[0].replace('@c.us', '')}`, {
+            notification.reply(`
+            🌞🍁𝐁𝐢𝐞𝐧𝐯𝐞𝐧𝐢𝐝@s a ${chat.name}🍁🌞
+
+            ⚜𝕹𝖚𝖊𝖛𝖔𝖘 𝕻𝖗𝖊𝖘𝖊𝖓𝖙𝖆𝖗𝖘𝖊 𝖈𝖔𝖓 :⚜
+            
+            ➣𝔽𝕆𝕋𝕆: (opcional)
+            ➣𝔼𝔻𝔸𝔻 :
+            ➣ℙ𝔸𝕀𝕊:
+            ➣ℕ𝕆𝕄𝔹ℝ𝔼:🍁
+            
+            Atte la administración`, {
                 mentions: [notification.recipientIds[0]]
             });
         }
@@ -367,7 +377,7 @@ let menu = `
 `
 const option_game = "*Opciones*\n\n" + "1. Quitar la opción Juego\n" + "2. Quitar los Juegos con menciones\n" + "3. Todos pueden utilizar los juegos con menciones";
 const menu_game = "estos son los juegos disponibles por el momento:\n\n" + "> Piedra 🪨, papel 🧻 o tiejeras ✂️(ppt)\n\n> formar pareja (fp) 👩🏻‍❤️‍💋‍👨🏻\n\n> Dado 🎲 (pon un numero del 1 al 6)\n\n> BlackJack(bj)\n\n> !q crea una pregunta" + "\n\n> cz (cara o cruz)" + "\n\n*Los Roles tienen sus juegos propios*"
-const links_baneados = ["is.gd", "chat.whatsapp.com", "5ne.co", "t.me", "xxnx", "pornhub", "xvideos", "xnxx", "xnxx", "xhamster", "redtube", "youporn"]
+const links_baneados = ["is.gd", "chat.whatsapp.com", "5ne.co", "t.me", "xxnx", "pornhub", "xvideos", "xnxx", "xnxx", "xhamster", "redtube", "youporn", "conejox"]
 let golpear;
 let counterListRequestMusic = 0;
 let counterListRequestVideo = 0;
