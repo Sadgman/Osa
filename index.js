@@ -361,7 +361,7 @@ let menu = `
 
 🎁 🎉— donar
 
-👨🏻‍💻👀 🛐— creador.
+💬🐻🦥— Osa
 
 ¡Por ahora estas son todas las opciones que puedes disfrutar! Sigue apoyando.
 `
@@ -2065,23 +2065,21 @@ client.on('message_create', async (message) => {
         Donar Ahora 💖 https://www.patreon.com/alastor782/membership
         `);
     }
-    if (message.body.toLocaleLowerCase() === 'creador' || message.body.toLocaleLowerCase() === 'como se crea un bot') {
+    if (message.body.toLocaleLowerCase() === 'osa') {
         await chat.sendSeen();
         await chat.sendStateTyping();
         message.reply(`                 
             *INFORMACIÓN*
-        *SOBRE EL CREADOR*
-            *DEL BOT 𖠌*
+           *SOBRE LA OSA*
+            *DE LA OSA 𖠌*
 
     ¡Hola! ◡̈
-    Puedes comunicarte con mi creador desde este link:
+    Puedes comunicarte con la Osa desde este link:
     
-    wa.me/${Alastor_Number[0]}
+    wa.me/51961100286
     
     𖤣.𖥧.𖡼.⚘𖤣.𖥧.𖡼.⚘𖤣.𖥧.𖡼.⚘𖤣.𖥧.𖡼.⚘𖤣.
-    Aquí puedes Contactar con el diseñador del menu:
-
-    wa.me/5144637126`
+    `
     
         );
     }
