@@ -1367,7 +1367,7 @@ client.on('message_create', async (message) => {
             message.reply('Este juego solo funciona en grupos');
         }
     }
-    if (message.body.toLocaleLowerCase() === 'formar pareja' || message.body.toLocaleLowerCase() === 'fp') {
+    if (message.body.toLocaleLowerCase() === 'fp') {
         if (chat.isGroup) {
             if (addgroup(chat.id._serialized) && watchBan(chat.id._serialized, 'fp') && watchBan(chat.id._serialized, 'todos') && watchBan(chat.id._serialized, 'menciones')) {
                 if (watchBan(chat.id._serialized, 'admins') == false && participantes(message.author) && getAllInfoPlayer(contact.id.user).casado === "nadie :(") {
@@ -2059,8 +2059,6 @@ client.on('message_create', async (message) => {
         💻 Gastos del Servidor y Desarrollo - Con $10 al mes, apoyas directamente los costos del servidor y el desarrollo continuo del bot.
         ¿Quieres contribuir?
         
-        *Si quieres que el Bot entre a tu grupo dona algo*
-
         Haz clic aquí y elige cómo quieres apoyar: 
         Donar Ahora 💖 https://www.patreon.com/alastor782/membership
         `);
