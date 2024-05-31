@@ -33,10 +33,6 @@ function activateClientBot(browserPath){
             args: ['-no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
             executablePath: browserPath
         },       
-        webVersionCache: {
-       		type: 'remote',
-        	remotePath: `https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.2409.2.html`,
-        },
         ffmpegPath: ffmpegPath
 
     });
@@ -307,21 +303,6 @@ client.on('group_join', (notification) => {
         }
     })
 });
-client.on('group_admin_changed', (notification) => {
-    notification.getChat().then((chat) => {
-        addgroup(chat.id._serialized);
-        if (notification.type === 'promote') {
-            if(notification.recipientIds[0] === client.info.wid._serialized){
-                botIsAdmin(chat.id._serialized, 2);
-            }
-        } else if (notification.type === 'demote'){
-            if(notification.recipientIds[0] === client.info.wid._serialized){
-                botIsAdmin(chat.id._serialized, 3);
-            }
-            console.log(`You were demoted by ${notification.author}`);
-        }
-    });
-});
 let menu = `
 ~*MENU*~
 
@@ -437,15 +418,20 @@ client.on('message_create', async (message) => {
             }
         }
     }
-    if (botIsAdmin(chat.id._serialized, 1) === true) {
-        let mmsg = message.body.toLocaleLowerCase();
-        addgroup(chat.id._serialized);
-        for (let i = 0; i < links_baneados.length; i++) {
-            if (mmsg.includes(links_baneados[i])) {
-                message.delete(true);
+    if(chat.isGroup){
+        group.iAmadmin().then(resp => {
+            if(resp){
+                let mmsg = message.body.toLocaleLowerCase();
+                addgroup(chat.id._serialized);
+                for (let i = 0; i < links_baneados.length; i++) {
+                    if (mmsg.includes(links_baneados[i])) {
+                        message.delete(true);
+                        group.removeParticipants([contact.id._serialized])
+                    }
+                }
             }
-        }
-    } 
+        });
+    }
     if (message.body.toLocaleLowerCase() === 'io' || message.body.toLocaleLowerCase() === 'ls') {
         let info;
         let casadoContact;
