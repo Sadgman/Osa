@@ -297,7 +297,7 @@ client.on('group_join', (notification) => {
     notification.getChat().then((chat) => {
         addgroup(chat.id._serialized);
         if(watchBot(chat.id._serialized)){
-            notification.reply(`Bienvenid@ @${notification.recipientIds[0].replace('@c.us', '')} *Presentate, Por favor*\n\n${chat.description}`, {
+            notification.reply("🌞🍁𝐁𝐢𝐞𝐧𝐯𝐞𝐧𝐢𝐝@s🍁🌞\n\n𝕹𝖚𝖊𝖛𝖔𝖘 𝕻𝖗𝖊𝖘𝖊𝖓𝖙𝖆𝖗𝖘𝖊 𝖈𝖔𝖓 :\n\n➣𝔽𝕆𝕋𝕆: (opcional)\n➣𝔼𝔻𝔸𝔻 :\n➣ℙ𝔸𝕀𝕊:\n➣ℕ𝕆𝕄𝔹ℝ𝔼:\n\nAtte la administración", {
                 mentions: [notification.recipientIds[0]]
             });
         }
