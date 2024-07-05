@@ -3,6 +3,7 @@ const fs = require('fs');
 const googleTTS = require('google-tts-api');
 const youtube = require('youtube-sr').default;
 const ytdl = require('ytdl-core');
+const instagramDl = require("@sasmeee/igdl");
 const { obtenerPais } = require('./utils/prefix.js');
 const ffmpeg = require('fluent-ffmpeg');
 const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
