@@ -1,5 +1,6 @@
 const qrcode = require('qrcode-terminal');
 const fs = require('fs');
+const fetch = require("node-fetch");
 const googleTTS = require('google-tts-api');
 const youtube = require('youtube-sr').default;
 const ytdl = require('ytdl-core');
