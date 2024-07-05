@@ -304,9 +304,7 @@ client.on('group_join', (notification) => {
     })
 });
 let menu = `
-~*MENU*~
-
-📋🧾📄| Menu
+*MENU*
 
 👨‍👩‍👧‍👦🏡💞 | !todos (Only Admins).
 
@@ -336,9 +334,7 @@ let menu = `
 
 🏦💰💱 | Banco (opcion, monto)
 
-🧊⛏️🕹️ | MS (servidor de Minecraft)
-
-📝⚙️🪛 | As (Ajustes)
+📝⚙️🪛 | As (Ajustes Only admins)
 
 🎁 🎉— donar
 
@@ -569,11 +565,6 @@ client.on('message_create', async (message) => {
         data = JSON.parse(file)
         const randomIndex = Math.floor(Math.random() * data.animes.names.length);
         message.reply(data.animes.names[randomIndex]);
-    }
-    if (message.body.toLocaleLowerCase() === 'minecraft server' || message.body.toLocaleLowerCase() === 'ms') {
-        await chat.sendSeen();
-        await chat.sendStateTyping();
-        message.reply('Aqui tienes el ip del servidor: AFSI.aternos.me\n' + "puerto: 55545\n" + "link del server: https://add.aternos.org/AFSI\n\n" + "Apk del juego: https://www.mediafire.com/file/g7tcnqaw53viyei/Minecraft-1.20.51.01-apktodo.io.apk/file");
     }
     if (message.body.toLocaleLowerCase().startsWith('dados ') || message.body.toLocaleLowerCase().startsWith('dado ')) {
         let parts = message.body.split(' ');
