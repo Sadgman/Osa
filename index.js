@@ -1834,6 +1834,28 @@ client.on('message_create', async (message) => {
                 message.reply(mensaje_error);
             })
     }
+    async function descargarVideoIG(url, mensaje_error) {
+        try {
+            const dataList = await instagramDl(url);
+            const response = await fetch(dataList[0].download_link);
+            if (response.ok) {
+                const buffer = await response.buffer();
+                fs.writeFile("video.mp4", buffer, () => {
+                    const file = fs.readFileSync('video.mp4');
+                    const media = new MessageMedia('video/mp4', file.toString('base64'), 'video');
+                    chat.sendMessage(media, { quotedMessageId: message.id._serialized });
+                    counterListRequestVideo = 0;
+                });
+            } else {
+                counterListRequestVideo = 0;
+                message.reply(mensaje_error);
+            }
+        } catch (err) {
+            console.error(err);
+            counterListRequestVideo = 0;
+            message.reply(mensaje_error);
+        }
+    }
     if (message.body.toLowerCase().startsWith("v ")) {
             counterListRequestVideo++;
             const mensaje_error = "*Lo siento, no pude descargar el video 😞*";
