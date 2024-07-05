@@ -419,14 +419,14 @@ client.on('message_create', async (message) => {
         }
     }
     if(chat.isGroup){
-        group.iAmadmin().then(resp => {
+        chat.iAmadmin().then(resp => {
             if(resp){
                 let mmsg = message.body.toLocaleLowerCase();
                 addgroup(chat.id._serialized);
                 for (let i = 0; i < links_baneados.length; i++) {
                     if (mmsg.includes(links_baneados[i])) {
                         message.delete(true);
-                        group.removeParticipants([contact.id._serialized])
+                        chat.removeParticipants([contact.id._serialized])
                     }
                 }
             }
