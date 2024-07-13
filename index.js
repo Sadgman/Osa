@@ -362,6 +362,7 @@ client.on('message_create', async (message) => {
     const chat = await message.getChat();
     let contact = await message.getContact();
     console.log(Object.keys(chat))
+    message.reply("hola", chat)
     console.log("menaje de : " + message.body)
     function quitar_acentos(palabra){
         const palabras_raras = ["á", "é", "í", "ó", "ú", "ñ", "ü"];
