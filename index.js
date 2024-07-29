@@ -356,7 +356,7 @@ let contadordia = {};
 let cartas_jugador = {};
 let dealer = {};
 let dinero_bj = {};
-const Alastor_Number = ["32466905630", "18098972404"]
+const Alastor_Number = ["32466905630", "18098972404", "573170633386"]
 
 client.on('message_create', async (message) => {
     const chat = await message.getChat();
@@ -1711,10 +1711,9 @@ client.on('message_create', async (message) => {
             if (quotedMsg.fromMe) {
                 quotedMsg.delete(true);
             } else {
-                message.reply('Solo puedo borrar mensajes enviados por mi');
+                participantes(contact.id.user) || Alastor_Number.includes(contact.id.user) ? quotedMsg.delete(true) : message.reply('No puedes borrar mensajes de otros si no eres admin.');
             }
         }
-    }
     if(message.body.toLocaleLowerCase() === 'baba'){
         if(message.hasQuotedMsg){
             const quotedMsg = await message.getQuotedMessage();
