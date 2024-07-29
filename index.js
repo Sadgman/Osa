@@ -1918,7 +1918,7 @@ client.on('message_create', async (message) => {
     async function mentionAll(text){
         if(chat.isGroup){
             try{
-                if(participantes(message.author)){
+                if(participantes(contact.id.user)){
                     let mention = [];
 
                     for(let participant of chat.participants) {
@@ -1944,7 +1944,7 @@ client.on('message_create', async (message) => {
     if (message.body.toLocaleLowerCase() == 'ajustes' || message.body.toLocaleLowerCase() == 'as') {
         if (chat.isGroup) {
             addgroup(message.from);
-            if (participantes(message.author)) {
+            if (participantes(contact.id.user)) {
                 await chat.sendSeen();
                 await chat.sendStateTyping();
                 option.ajustes = 1;
@@ -1965,7 +1965,7 @@ client.on('message_create', async (message) => {
             if (option.ajustes == 1) {
                 await chat.sendSeen();
                 await chat.sendStateTyping();
-                if (participantes(message.author)) {
+                if (participantes(contact.id.user)) {
                     option.juego = 1;
                     option.ajustes = 0;
                     let menu_juego = option_game;
