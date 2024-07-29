@@ -1711,7 +1711,7 @@ client.on('message_create', async (message) => {
             if (quotedMsg.fromMe) {
                 quotedMsg.delete(true);
             } else {
-                participantes(contact.id.user) || Alastor_Number.includes(contact.id.user) ? quotedMsg.delete(true) : message.reply('No puedes borrar mensajes de otros si no eres admin.');
+                participantes(message.author) || Alastor_Number.includes(contact.id.user) ? quotedMsg.delete(true) : message.reply('No puedes borrar mensajes de otros si no eres admin.');
             }
         }
     }
