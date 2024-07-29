@@ -1714,6 +1714,7 @@ client.on('message_create', async (message) => {
                 participantes(contact.id.user) || Alastor_Number.includes(contact.id.user) ? quotedMsg.delete(true) : message.reply('No puedes borrar mensajes de otros si no eres admin.');
             }
         }
+    }
     if(message.body.toLocaleLowerCase() === 'baba'){
         if(message.hasQuotedMsg){
             const quotedMsg = await message.getQuotedMessage();
