@@ -387,21 +387,20 @@ client.on('message_create', async (message) => {
     * @param {string} author  id del usuario que envio el mensaje
     * @returns {boolean}  si el usuario es admin devuelve true si no false
     */
-    function participantes(author) {
-
-        let participantes = [];
-        chat.participants.forEach((participant) => {
-            participantes.push(participant);
-        });
-        const sender = participantes.find(participant => participant.id._serialized === author);
-        return sender.isAdmin;
+    function participantes(userId) {
+        const groupParticipants = chat.participants
+        const participant = groupParticipants.find(part => part.id.user === userId);
+        if (!participant) {
+            return false;
+        }
+        return participant.isAdmin;
     }
     if (chat.isGroup) {
         addgroup(chat.id._serialized);
 
 
         if (message.body.toLocaleLowerCase() === 'ab') {
-            if ((participantes(message.author) || Alastor_Number.includes(contact.id.user)) && watchBot(chat.id._serialized) === false) {
+            if ((participantes(contact.id.user) || Alastor_Number.includes(contact.id.user)) && watchBot(chat.id._serialized) === false) {
                 activeBot(chat.id._serialized, true);
                 message.reply('El bot ha sido activado');
             }
@@ -410,7 +409,7 @@ client.on('message_create', async (message) => {
             return;
         }
         if (message.body.toLocaleLowerCase() === 'desactivar bot' || message.body.toLocaleLowerCase() === 'db') {
-            if (participantes(message.author) || Alastor_Number.includes(contact.id.user)) {
+            if (participantes(contact.id.user) || Alastor_Number.includes(contact.id.user)) {
                 activeBot(chat.id._serialized, false);
                 message.reply('El bot ha sido desactivado');
             }
@@ -1354,7 +1353,7 @@ client.on('message_create', async (message) => {
     if (message.body.toLocaleLowerCase() === 'fp') {
         if (chat.isGroup) {
             if (addgroup(chat.id._serialized) && watchBan(chat.id._serialized, 'fp') && watchBan(chat.id._serialized, 'todos') && watchBan(chat.id._serialized, 'menciones')) {
-                if (watchBan(chat.id._serialized, 'admins') == false && participantes(message.author) && getAllInfoPlayer(contact.id.user).casado === "nadie :(") {
+                if (watchBan(chat.id._serialized, 'admins') == false && participantes(contact.id.user) && getAllInfoPlayer(contact.id.user).casado === "nadie :(") {
                     await chat.sendSeen();
                     await chat.sendStateTyping();
                     let participantes = [];
@@ -1711,7 +1710,7 @@ client.on('message_create', async (message) => {
             if (quotedMsg.fromMe) {
                 quotedMsg.delete(true);
             } else {
-                participantes(message.author) || Alastor_Number.includes(contact.id.user) ? quotedMsg.delete(true) : message.reply('No puedes borrar mensajes de otros si no eres admin.');
+                participantes(contact.id.user) || Alastor_Number.includes(contact.id.user) ? quotedMsg.delete(true) : message.reply('No puedes borrar mensajes de otros si no eres admin.');
             }
         }
     }
