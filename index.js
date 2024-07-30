@@ -691,8 +691,8 @@ client.on('message_create', async (message) => {
                     message.reply(futuro[randomIndex]);
                 }
             } */
-           message.reply("opcion desactivada por bug hasta nuevo aviso las estadisticas de dinero seran devueltas a 0")
-        }
+        message.reply("opcion desactivada por bug hasta nuevo aviso las estadisticas de dinero seran devueltas a 0")
+        //}
     }
     if(getAllInfoPlayer(contact.id.user).roles === "ama"){
         let day = parseInt(dayjs().tz("America/Santo_Domingo").format('D'))
