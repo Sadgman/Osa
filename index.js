@@ -655,7 +655,7 @@ client.on('message_create', async (message) => {
     }
     // Skills de Roles
     if (message.body.toLocaleLowerCase().startsWith("robar ") || message.body.toLocaleLowerCase().startsWith("rb ")){
-        if (getAllInfoPlayer(contact.id.user).roles === "ladron") {
+/*         if (getAllInfoPlayer(contact.id.user).roles === "ladron") {
             let futuro = ["lograste robar", "te atraparon"];
             let randomIndex = Math.floor(Math.random() * futuro.length);
             if(message.hasQuotedMsg){
@@ -690,7 +690,8 @@ client.on('message_create', async (message) => {
                     update_info_player(contact.id.user, "ganadas", getAllInfoPlayer(contact.id.user).ganadas - 1, true);
                     message.reply(futuro[randomIndex]);
                 }
-            }
+            } */
+           message.reply("opcion desactivada por bug hasta nuevo aviso las estadisticas de dinero seran devueltas a 0")
         }
     }
     if(getAllInfoPlayer(contact.id.user).roles === "ama"){
